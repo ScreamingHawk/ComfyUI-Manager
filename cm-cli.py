@@ -257,9 +257,7 @@ def update_parallel(nodes):
 
     i = 1
     for res in processed:
-        if res is None:
-            print(f"[{i}/{total}] Post update: ERROR")
-        else:
+        if res is not None:
             print(f"[{i}/{total}] Post update: {res.target}")
             if res.postinstall is not None:
                 res.postinstall()
