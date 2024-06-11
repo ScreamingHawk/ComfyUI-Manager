@@ -648,6 +648,9 @@ class UnifiedManager:
 
         version_spec = node_info.version
 
+        if self.active_nodes[node_id][0] == version_spec:
+            return ManagedResult('skip').with_msg("Up to date")
+
         archive_name = f"CNR_temp_{str(uuid.uuid4())}.zip"  # should be unpredictable name - security precaution
         download_path = os.path.join(custom_nodes_path, archive_name)
         download_url(node_info.download_url, custom_nodes_path, archive_name)
